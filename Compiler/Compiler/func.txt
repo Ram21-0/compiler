@@ -1,0 +1,3 @@
+int sum(int a,int b) {
+t0 = a + b; 
+return t0;}

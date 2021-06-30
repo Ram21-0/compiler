@@ -1,0 +1,121 @@
+func int reverse = (int num) : (
+    int rev = 0;
+    while num > 0 (
+        rev = rev*10 + num%10;
+        num = num/10;
+    )
+    return rev;
+)
+
+func int sum = (int a,int b) : return a + b;
+
+func int max = (int a,int b) : (
+    if a > b return a;
+    return b;
+)
+
+func int brackets = (int n,int o,int c,String s) : (
+    if (o == n && c == n) (
+        println s;
+        return 0;
+    )
+
+    if c < o brackets(n,o,c+1,s # ")");
+    if o < n brackets(n,o+1,c,s # "(");
+    return 0;
+)
+
+int var = 0;
+if var == 0 var = 1;
+else var = 0;
+
+
+
+print "Enter number to be reversed - ";
+int n; read n;
+
+print "Reverse = "; println reverse(reverse(reverse(n)));
+
+println "\n**********************************\n";
+
+print "Generate parentheses for n = "; 
+read n;
+
+brackets(n,0,0,"");
+
+String y = "234";
+
+
+println "\n**********************************\n";
+
+
+
+
+
+
+
+
+array a[10];
+n = 10;
+print "Enter the elements of array - ";
+loop(int i=0;i<n;i++) (
+    int xx; read xx;
+    set a[i] = xx;
+)
+
+array x[10];
+int lis = 0;
+loop(i=0;i<n;i++) (
+    set x[i] = 1;
+    loop(int j=0;j<i;j++) (
+        if ({a[i]} > {a[j]}) (
+            set x[i] = max({x[i]},{x[j]}+1);
+        )
+    )
+    lis = max(lis,{x[i]});
+)
+
+println "\n**********************************\n";
+
+print "LENGTH OF LONGEST INCREASING SUBSEQ - ";
+println lis;
+
+println "\n**********************************\n";
+
+loop(i=0;i<n;i++) (
+    loop(j=0;j<(n-i-1);j++) (
+        if ({a[j]} > {a[j+1]}) (
+            int t = {a[j]};
+            set a[j] = {a[j+1]};
+            set a[j+1] = t;
+        )
+    )
+)
+
+print "SORTING THE ARRAY USING BUBBLE SORT : ";
+loop(i=0;i<n;i++) (
+    print {a[i]};
+    print " ";
+)
+
+println "\n\n**********************************\n";
+
+println "BINARY SEARCH\n";
+int l = 0;
+int h = n - 1;
+
+int m;
+print "Enter element - ";
+int e; read e;
+while (l <= h) (
+    m = (l + h) / 2;
+    if ({a[m]} == e) (
+        print "Found at index ";
+        println m;
+        break;
+    )
+    else if ({a[m]} < e) l = m + 1;
+    else h = m - 1; 
+)
+
+println "\n**********************************\n";
